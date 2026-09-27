@@ -114,7 +114,7 @@ def save_stored_hf_token(token: str, *, state_path: Path | str | None = None) ->
     """Store the Cookbook Hugging Face token in cookbook_state.json, encrypted.
 
     This is the only path that can persist the token typed in
-    Cookbook -> Dependencies: the debounced state sync strips ``env.hfToken``
+    Cookbook -> Settings: the debounced state sync strips ``env.hfToken``
     from every request it sends, so the generic state save never receives it
     (#6361). Everything else that reads the token goes through
     :func:`load_stored_hf_token`.

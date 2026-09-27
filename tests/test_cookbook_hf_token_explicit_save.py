@@ -1,6 +1,6 @@
 """Cookbook Hugging Face token persistence — issue #6361.
 
-The token typed into Cookbook -> Dependencies was dropped by the client before
+The token typed into Cookbook -> Settings was dropped by the client before
 every request it sent: `_stripStateSecrets()` deletes `env.hfToken` from the
 debounced state POST, and `_envStateForStorage()` deletes it from the
 localStorage copy. So `/api/cookbook/state`'s encrypt-and-store branch never
@@ -226,7 +226,7 @@ async def test_route_forwards_an_invalid_token_as_400(monkeypatch, tmp_path):
 
 @pytest.mark.asyncio
 async def test_state_reload_reports_configured_and_never_the_secret(monkeypatch, tmp_path):
-    """GET /state is what the Dependencies panel renders after a reload."""
+    """GET /state is what the Settings panel renders after a reload."""
     state_path = _state_file(tmp_path)
     await _save(state_path, monkeypatch, TOKEN)
 

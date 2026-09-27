@@ -3521,7 +3521,7 @@ def setup_cookbook_routes() -> APIRouter:
 
     @router.post("/api/cookbook/hf-token")
     async def set_cookbook_hf_token(request: Request, req: CookbookHfTokenRequest):
-        """Store the Hugging Face token typed into Cookbook -> Dependencies.
+        """Store the Hugging Face token typed into Cookbook -> Settings.
 
         Admin-gated like the other state writers: the value lands in the same
         cookbook_state.json that the serve and download builders read back
@@ -3530,7 +3530,7 @@ def setup_cookbook_routes() -> APIRouter:
         Why a route of its own: the debounced state sync runs its body through
         `_stripStateSecrets()` (static/js/cookbookRunning.js), which deletes
         `env.hfToken` from every POST, so `/api/cookbook/state` never receives
-        the token and the Dependencies field could not persist (#6361). That
+        the token and the Settings field could not persist (#6361). That
         redaction stays exactly as it is; this explicit call is the only writer,
         and the reply reports what is now stored rather than what was typed.
         """
