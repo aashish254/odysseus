@@ -2,7 +2,7 @@
 //
 // Why this exists: every background state sync sends its body through
 // `_stripStateSecrets()` (cookbookRunning.js), which deletes `env.hfToken`, so
-// `/api/cookbook/state` never received the token typed in Dependencies and the
+// `/api/cookbook/state` never received the token typed in Settings and the
 // field could not persist across a reload (#6361). This is the one request that
 // carries it, and it reports back what the server stored.
 //
